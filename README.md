@@ -1,4 +1,4 @@
-# Pyfscation-Python obfuscation and analysis
+# PPP-PythonPythonPython- Python obfuscation and analysis
 
 Code Obfuscation is used to help conceal the code logic and implicit values, so reveres engineering or blatant coping of the code is not viable.
 
