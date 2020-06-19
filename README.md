@@ -8,12 +8,19 @@ The project works with Abstract Syntax Trees to modify and view the structure of
 
 ------------------------------------Installation-------------------------------------
 
+Install astor
+pip instal astor
 
-install "" to compile the AST into a comiled python code
+Install radon
+pip install radon
 
-install "" for report analysis
+Install timeit
+pip install timeit
 
-install "" for somthing
+Install tabulate
+pip install tabulate
+
 
 ----------------------------------------Usage----------------------------------------
 
+ppp.py <script_to_obfuscate> (<-h> or <-m> or <-l> level of obfuscation)
