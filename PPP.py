@@ -10,14 +10,14 @@ import os
 import gen_dead_code as gen
 import random
 from tabulate import tabulate
-
 #main.py
 
 
 class obf_name(ast.NodeTransformer):
 	def __init__(self, tree):
 		self.tree = tree
-
+		
+        #to view all the nodes
 	def run(self):
 		for n_stop in ast.walk(self.tree):
 
@@ -49,7 +49,6 @@ class obf_name(ast.NodeTransformer):
 					var_names[n_stop.name] = obf_let*count
 					count=count+1
 				n_stop.name = var_names[n_stop.name]
-				#print(ast.Name, n_stop.name)
 				
 			if isinstance(n_stop, ast.arguments):
 				for arg in n_stop.args:
@@ -63,14 +62,12 @@ class obf_name(ast.NodeTransformer):
 					var_names[n_stop.name] = obf_let*count
 					count=count+1
 				n_stop.name = var_names[n_stop.name]
-				#print(ast.Name, n_stop.name)
 
 			if isinstance(n_stop, ast.ImportFrom):
 				if n_stop.names[-1].asname not in var_names:
 					var_names[n_stop.names[-1].asname] = obf_let*count
 					count=count+1
 				n_stop.names[-1].asname = var_names[n_stop.names[-1].asname]
-				#print(ast.Name, n_stop.names[-1].asname)
 					
 			if isinstance(n_stop, ast.Import):
 				keywords.append(n_stop.names[-1].name)
@@ -79,7 +76,6 @@ class obf_name(ast.NodeTransformer):
 						var_names[n_stop.names[-1].asname] = obf_let*count
 						count=count+1
 					n_stop.names[-1].asname = var_names[n_stop.names[-1].asname]
-					#print(ast.Name, n_stop.names[-1].asname)
 					
 			if isinstance(n_stop, ast.Name):
 				if n_stop.id not in keywords:
@@ -87,13 +83,14 @@ class obf_name(ast.NodeTransformer):
 						var_names[n_stop.id] = obf_let*count
 						count=count+1
 					n_stop.id = var_names[n_stop.id]
-				#print(ast.Name, n_stop.id)
 					
 			if isinstance(n_stop, ast.Str):
 				r=""
 				for i in n_stop.s[:]:
 					r += 'chr('+str(ord(i))+')+'
 				n_stop.s=r[:-1]
+
+#couldn't cipher integers
 '''
 			if isinstance(n_stop, ast.Num):
 				if isinstance(n_stop.n, int):
@@ -157,6 +154,16 @@ def add_deadcode(file_dead):
 
 
 #CL-start
+#print("+-----------------------------------------------------------------------------------------------------+")
+print("""\n
+   ___       _   _                   ___       _   _                   ___       _   _                 
+  / _ \_   _| |_| |__   ___  _ __   / _ \_   _| |_| |__   ___  _ __   / _ \_   _| |_| |__   ___  _ __  
+ / /_)/ | | | __| '_ \ / _ \| '_ \ / /_)/ | | | __| '_ \ / _ \| '_ \ / /_)/ | | | __| '_ \ / _ \| '_ \ 
+/ ___/| |_| | |_| | | | (_) | | | / ___/| |_| | |_| | | | (_) | | | / ___/| |_| | |_| | | | (_) | | | |
+\/     \__, |\__|_| |_|\___/|_| |_\/     \__, |\__|_| |_|\___/|_| |_\/     \__, |\__|_| |_|\___/|_| |_|
+       |___/                             |___/                             |___/                       
+\n""")
+
 if len(sys.argv) > 4:
 	print('You have specified too many arguments')
 	sys.exit()
@@ -206,11 +213,8 @@ if not os.path.isfile(input_path) or not input_path[-2:] == "py":
 	print("The path specified does not exist or not the same type 'py'")
 	sys.exit()
 #CL-end
-'''
-result_1 = subprocess.run(["python -m flake8 --select=DUO", testContent], stdout=subprocess.PIPE)
-print(result_1)
-'''
-#print("----------------------------analyse----------------------------")
+	
+#------org_analyse-------
 with open(input_path,"r") as testContent:
 	source_con = ""
 	for content in testContent:
@@ -218,28 +222,7 @@ with open(input_path,"r") as testContent:
 	in_b = analyze(source_con)
 	c=radon.complexity.cc_visit(source_con)
 	v=radon.complexity.sorted_results(c)
-	#print(b)
-	#print("h visit",radon.metrics.h_visit(source_con))
-	#print("mi visit",radon.metrics.mi_rank(radon.metrics.mi_visit(source_con, True)))
-	#print("mi parameters", radon.metrics.mi_parameters(source_con, True))
-	#print("--------------------time------------------")
-	#execution_time_1 = Timer(source_con)
-	#print("the running time: ",execution_time_1.timeit(0))
-	#print(str(os.stat(input_path).st_size)+" Bytes")
 
-
-'''
-print("-------score compute Cyclomatic Complexity--------")
-[print("\n",i.letter, i.name, radon.complexity.cc_rank(i.complexity)) for i in v] 
-print("---------------")
-print("h visit",radon.metrics.h_visit(testContent))
-print("---------------")
-
-print("mi visit",radon.metrics.mi_rank(radon.metrics.mi_visit(testContent, True)))
-print("---------------")
-print("mi parameters", radon.metrics.mi_parameters(testContent, True))
-print("---------------")
-'''
 
 if high_obf:
 	v = 3#class, function or variables
@@ -291,47 +274,26 @@ with open(input_path,"a") as testContent_2:
 with open(input_path, "r") as s:
 	t = ast.parse(s.read())
 	obf = obf_name(t)
-		#obf.run()
 	obf.change()
 	root=astor.code_gen.to_source(obf.visit(t))
-		#print(root)
-		#root = obs_int(root)
-	root = obs_string(root)
-		
-		#print(root)
-	
+	root = obs_string(root)	
 
 
 
-#print("-------analyse--------")
+#-------new_analyse--------
 b = analyze(root)
 c=radon.complexity.cc_visit(root)
 v=radon.complexity.sorted_results(c)
-#print(b)
 
-#print("-------score compute Cyclomatic Complexity--------")
-#[print("\n",i.letter, i.name, radon.complexity.cc_rank(i.complexity)) for i in v] 
-#print("---------------")
-#print("h visit",radon.metrics.h_visit(root))
-#print("---------------")
-
-#print("mi visit",radon.metrics.mi_rank(radon.metrics.mi_visit(root, True)))
-#print("---------------")
-#print("mi parameters", radon.metrics.mi_parameters(root, True))
-#print("-------time--------")
-#execution_time = Timer(root)
-#print("the running time: ",execution_time.timeit(0))
-#print(os.stat(root).st_size)
-
+#write the new AST structure to a new script
 output_path = input_path[:-3]+"_obf.py"
 with open(output_path, 'w') as f:
 	f.write(root)
-#print(str(os.stat(output_path).st_size)+" Bytes")
+
+#print("+-----------------------------------------------------------------------------------------------------+\n\n")
 print(tabulate([['Lines of code', str(in_b[1]), str(b[1])],['Comments',str(in_b[6]),str(b[6])],['Exec time', Timer(source_con).timeit(0),Timer(root).timeit(0)],['Size', str(os.stat(input_path).st_size)+' Bytes', str(os.stat(output_path).st_size)+' Bytes']], headers=['Original script','Obfuscated script'],tablefmt="grid"))
 
-#print("----------------------------result----------------------------")
-exec(root)
-#obf.getAST()))
-#print(ast.dump(t))
+#To excute the resulted script
+#exec(root)
 
 

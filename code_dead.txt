@@ -1,0 +1,93 @@
+for IUC in range(102):
+	ePeqgBMidT = 146
+while(True):
+	import time;time.sleep(3)
+	break
+while(True):
+	import time;time.sleep(3)
+	break
+def JO (DTEvc):
+	Ycm = True
+	zI = 83074251
+	for oy in range(48):
+		GnzbMhF = 150
+	while(True):
+		import time;time.sleep(3)
+		break
+	while(True):
+		import time;time.sleep(3)
+		break
+	for NaTaU in range(48):
+		RazXDAW = 42
+	while(True):
+		import time;time.sleep(3)
+		break
+	while(True):
+		import time;time.sleep(3)
+		break
+def XZXAm (un):
+	AN = True
+	Hq = 21517536
+	PTY = "WCBZoMWUaJdAbDIBxzpSbiiZJNRFdCTPoe"
+	WAx = 73519022
+	Pe = True
+	yZf = 93008634
+	for oXZf in range(71):
+		wFjHld = 105
+	while(True):
+		import time;time.sleep(3)
+		break
+	while(True):
+		import time;time.sleep(3)
+		break
+def gI (cS):
+	Xn = True
+	oyM = 65162687
+	alw = "FWvMQoCQrPGrevFzTkQUrsfnJaxMPZQzSHZRZZk"
+	Wp = 81786614
+	for Yshk in range(57):
+		GBcQDRnbFc = 38
+	for hBQqT in range(23):
+		QabF = 106
+	while(True):
+		import time;time.sleep(3)
+		break
+	for JD in range(3):
+		ngXzvDYl = 82
+	while(True):
+		import time;time.sleep(3)
+		break
+	for ks in range(95):
+		ZMdX = 103
+	while(True):
+		import time;time.sleep(3)
+		break
+def VM (fJ):
+	SKW = False
+	Ghu = 31932193
+	THJ = "oEyvVofzKOzYvDneszGTILfWaMZhNVoymWtAGmfhMSpDZNgYxtUakNZxEsdxkPaDlYbRnEfOtvXJtPSpIIuJlJCTlCC"
+	eV = False
+	Kz = 6638831
+	uGj = "tESjxQsCHTbTEJXBGnLBmsZexjUTyHYAfp"
+	for Ag in range(115):
+		UUAMq = 133
+	for bQUsb in range(62):
+		merNJqJYYh = 110
+def ravzEl (yBhUg, la):
+	rkm = True
+	gOb = 26022912
+	ebB = "fAqshsTVTaDiJKsInUKCDrwIsZjluyzXfdTIeqaWYKxDgeqArXaVzHwHYsYZRBmmWJbHDMpWf"
+	for NVz in range(11):
+		XDCfaj = 39
+	while(True):
+		import time;time.sleep(3)
+		break
+	while(True):
+		import time;time.sleep(3)
+		break
+	if 'ROkGL' == 'NY':
+		jDIEB='LXOMO'
+	elif 'AsGVm' == 'YvNyP':
+		WnE='Z'
+	else:
+		PJFu='wY'
