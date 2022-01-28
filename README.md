@@ -4,7 +4,7 @@ Code Obfuscation is used to help conceal the code logic and implicit values, so 
 
 The solution will be used by every programmer who need the protection of their code, whether they work within a business or independently.
 
-The project works with Abstract Syntax Trees to modify and view the structure of inputted python codes. Furthermore, a script is used to create and add dead code into the pbfuscated python script.
+The project works with Abstract Syntax Trees to modify and view the structure of inputted python codes. Furthermore, a script is used to create and add dead code into the obfuscated python script.
 
 ------------------------------------Installation-------------------------------------
 
